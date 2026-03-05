@@ -1,13 +1,15 @@
 import random
 
+# FIXME: this should be reordered, easy = less
+
 
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
         return 1, 20
     if difficulty == "Normal":
-        return 1, 100
-    if difficulty == "Hard":
         return 1, 50
+    if difficulty == "Hard":
+        return 1, 100
     return 1, 100
 
 
@@ -49,14 +51,14 @@ def check_guess(guess, secret):
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
     if outcome == "Win":
-        points = 100 - 10 * (attempt_number + 1)
+        # FIXME: should be just attempt number?
+        points = 100 - 10 * (attempt_number)
         if points < 10:
             points = 10
         return current_score + points
 
+    # FIXME: another injected bug?  shouldn't mod 2?
     if outcome == "Too High":
-        if attempt_number % 2 == 0:
-            return current_score + 5
         return current_score - 5
 
     if outcome == "Too Low":
