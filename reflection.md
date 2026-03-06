@@ -25,6 +25,7 @@ Bug 3: The attempts left appear to be off by one, and if you do a new game, it c
 
 I used Claude.
 The AI suggested that the hint logic was reversed (e.g. if the guess was below the answer, it incorrectly hinted to go lower). I reviewed the code and validated that the logic was incorrect.
+I didn't run into any cases where the AI gave incorrect or misleading responses this time.
 
 ---
 
@@ -35,6 +36,10 @@ The AI suggested that the hint logic was reversed (e.g. if the guess was below t
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
 
+I determined if a bug was fixed by test suite, as well as by testing the application live.
+The test suite injected values to assert outputs for various functions as unit tests to determine if expected results were yielded by the input. Additionally, functional tests of the app determined the behavior was corrected.
+The AI was able to help write unit tests effectively, but in this case it made more sense for me to test the gameplay since it was a simple loop.
+
 ---
 
 ## 4. What did you learn about Streamlit and state?
@@ -42,6 +47,10 @@ The AI suggested that the hint logic was reversed (e.g. if the guess was below t
 - In your own words, explain why the secret number kept changing in the original app.
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 - What change did you make that finally gave the game a stable secret number?
+
+The secret number wasn't exactly changing - but the problem is the reverse suggestions implied it was dancing around.
+Streamlit repeats input and output in sequence and session state is the concept of a declaratively tracking the state of a user session by tracking state changes and data.
+I fixed the the hint so you could tell which direction the number really was from your guess.
 
 ---
 
@@ -51,3 +60,7 @@ The AI suggested that the hint logic was reversed (e.g. if the guess was below t
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+I use a lot of similar techniques when doing agentic engineering, and will continue to use them. I should spend more time proactively investigating areas (especially CSS) without overdescribing spatial relations.
+I definitely prefer agents vs the chat only component. It is 'riskier' if you don't bound it due to the propensity of agents to take actions, but it is more fluid.
+This project didn't really change how I think about AI generated code, but it was interesting to look at a different stack that I normally don't come across.
